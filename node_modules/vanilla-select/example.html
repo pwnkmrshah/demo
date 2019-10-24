@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VanillaSelect - standalone replacement for select elements</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300">
+	<link rel="stylesheet" type="text/css" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="dist/vanilla-select.css">
+	<style>
+		*{padding:0; margin:0;}
+		body {
+			font: 300 15px Roboto, Calibri;
+		}
+
+		.content {
+			margin: 50px auto 0;
+			width: 300px;
+		}
+
+		h2 {
+			margin-bottom:10px;
+		}
+
+		h3 {
+			padding-top: 25px;
+			font-weight: normal;
+		}
+
+        .select-box {
+            font-family: Roboto, Arial;
+            margin: 25px 0;
+        }
+	</style>
+</head>
+<body>
+	<div class="content">
+		<h2>EXAMPLE:</h2>
+
+		<h3>Support search:</h3>
+		<div ref="select" class="select-box"></div>
+		<div ref="select" class="select-box"></div>
+
+		<h3>And default selected option:</h3>
+		<div ref="select2" class="select-box"></div>
+	</div>
+
+	<script src="dist/vanilla-select.min.js"></script>
+	<script>
+
+		const source = [{
+				icon: 'fa fa-font',
+				value: 'Abril Fatface'
+			},
+			{
+				icon: 'fa fa-font',
+				value: 'Allura'
+			},
+			{
+				icon: 'fa fa-font',
+				value: 'Amatic SC'
+			}
+		];
+
+		let select = Array.from(document.querySelectorAll('[ref="select"]')).map(el => {
+			return new Select({
+				placeholder: 'Select Font',
+				search: true,
+				noResults: 'No results found',
+				dataset: source,
+				onSelected: item => console.log(item)
+			}).componentMount({
+				el: el
+			});
+		});
+
+		let select2 = new Select({
+			dataset: source,
+			selected: source[1].value,
+			onSelected: item => console.log(item)
+		}).componentMount({
+			el: document.querySelector('[ref="select2"]')
+		});
+
+	</script>
+</body>
+
+</html>

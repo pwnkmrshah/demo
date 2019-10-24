@@ -1,0 +1,63 @@
+<div id="signupbox" style="margin-top:50px" class="mainbox col-md-5 col-md-offset-4 col-sm-7 col-sm-offset-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="panel-title text-center">
+        Sign Up <i class="fa fa-user-plus"></i>
+      </div>
+    </div>  
+    <div class="panel-body" >
+      <%= form_for @user, :url => {:action => "create"}, :html => {:id => "signupform", :class => "form-horizontal"} do |f|%>
+
+        <div >
+        <% if @user.errors.any? %>
+          <% @user.errors.keys.each { |attr| @user.errors[attr].delete_at(1) } %> 
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+          </ul>
+        <% end %>
+        </div>          
+
+
+        <div class="form-group">
+          <%= f.label :name, "Name", class: "col-md-4 control-label" %>
+          <div class="col-md-8">
+            <%= f.text_field :name,class: "form-control "  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, "Email", class: "col-md-4 control-label" %>
+          <div class="col-md-8">
+            <%= f.email_field :email,class: "form-control "  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :phone, "Phone", class: "col-md-4 control-label" %>
+          <div class="col-md-8" >
+            <%= f.text_field :phone,class: "form-control " %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, "Password", class: "col-md-4 control-label" %>
+          <div class="col-md-8">
+            <%= f.password_field :password,class: "form-control "  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirm password", class: "col-md-4 control-label" %>
+          <div class="col-md-8">
+            <%= f.password_field :password_confirmation,class: "form-control "  %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-4 col-md-8">
+            <%= button_tag(type: "submit", id: "btn-signup", class: "btn btn-primary btn-sm") do %>
+            Sign Up <i class="fa fa-user-plus"></i>   
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+     </div>
+   </div>
+ </div>

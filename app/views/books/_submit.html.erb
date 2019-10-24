@@ -1,0 +1,33 @@
+ <% if current_user.present? %>
+<h1>Submit Books here ..</h1>
+
+<%= form_for @book, :url => {:action => "submit"} do |form| %>
+
+  <% if @book.errors.any? %>  
+    <div style="color: red;">  
+      <ul>  
+        <% for message in @book.errors.full_messages %>  
+          <li><%=  message %></li>  
+        <% end %>  
+      </ul>  
+    </div>  
+  <% end %>
+
+  <p>
+    <%= form.label :book_id %><br/>
+    <%= form.text_field :book_id %>
+  </p>
+  <p>
+    <%= form.label :issued_to %><br/>
+    <%= form.text_field :issued_to %>
+  </p>
+  <p>
+    <%= form.label :return_date %><br/>
+    <%= form.text_field :submission_date %>
+  </p>
+  <%= form.submit 'Submit Book', class: 'button btn btn-primary' %> <br><br>
+<% end %>
+<% else %>
+  <h2>Login to Add books</h2>
+  <%= render 'login'%>
+ <% end %>    

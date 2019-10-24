@@ -1,0 +1,34 @@
+<div id="signupbox" style="margin-top:50px" class="mainbox col-md-5 col-md-offset-4 col-sm-7 col-sm-offset-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="panel-title text-center">
+        Issue Book</i>
+      </div>
+    </div>  
+    <div class="panel-body" >
+      <%= form_for @issue_book, :url => {:action => "issue"}, :html => {:id => "signupform", :class => "form-horizontal"} do |f|%>
+
+        <div class="form-group">
+          <%= f.label :email, "User Email", class: "col-md-4 control-label" %>
+        <div class="col-md-8" >
+          <%= f.collection_select(:email, User.all, :id, :email) %>
+        </div>  
+        </div>
+        <div class="form-group">
+          <%= f.label :isbn, "ISBN No.", class: "col-md-4 control-label" %>
+          <div class="col-md-8">
+            <%= f.text_field :isbn,class: "form-control "  %>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="col-md-offset-4 col-md-8">
+            <%= button_tag(type: "submit", id: "btn-signup", class: "btn btn-primary btn-sm") do %>
+            Issue Book </i>   
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+     </div>
+   </div>
+ </div>

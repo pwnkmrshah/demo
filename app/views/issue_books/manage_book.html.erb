@@ -1,0 +1,49 @@
+<div class="form-group pull-right">
+    <input type="text" class="search form-control" placeholder="What you looking for?">
+</div>
+
+  <div class="container">
+    <!-- <div class="table-wrapper"> -->
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-8"><h2>Manage Books </h2></div>
+      </div>
+    </div>
+    <table class="table table-bordered table-hover results" id="del"> 
+    <thead >
+    <thead >
+    <tr>
+      <th>Book Id</th>
+      <th>Issued to</th>
+      <th>Issued on</th>
+      <th>Submission Date</th>
+      <th>Return Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for issue_book in @issue_book do %>
+    <tr>
+      <td> <%= issue_book.book_id%> </td> 
+      <td> <%= issue_book.email%> </td> 
+      <td> <%= issue_book.issue_date %> </td> 
+      <td> <%= issue_book.submission_date %> </td>
+      <td> <%= issue_book.return_date %> </td>
+      <td> <%= issue_book.status %> </td>
+      <td>
+        <% if issue_book.issued? %>
+        <div class="px-2">
+          <%= link_to "Submit", submit_issued_book_path(id: issue_book.book_id), class: "btn btn-danger "%> 
+        </div>
+        <%else%>
+        <div class="px-2">
+          <%= link_to "Issue", issue_form_path(id: issue_book.book_id), class: "btn btn-info "%> 
+        </div>
+        <%end%>
+        </td>
+    </tr>
+      <%end%>
+  </tbody>
+  </table>
+  <!-- </div> -->

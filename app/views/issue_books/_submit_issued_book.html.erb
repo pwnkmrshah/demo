@@ -1,0 +1,65 @@
+ <% if current_user.present? %>
+  <div id="signupbox" style="margin-top:50px" class="mainbox col-md-5 col-md-offset-4 col-sm-7 col-sm-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title text-center">
+          Submit Book</i>
+        </div>
+      </div>  
+    <div class="panel-body" >
+      <%= form_for @issue_book, :url => {:action => "submit"}, :html => {:id => "signupform", :class    => "form-horizontal"} do |f|%>
+
+     <% if @issue_book.errors.any? %>  
+        <div style="color: red;">  
+          <ul>  
+            <% for message in @issue_book.errors.full_messages %>  
+              <li><%=  message %></li>  
+            <% end %>  
+          </ul>  
+        </div>  
+      <% end %>
+      <%= f.hidden_field :book_id, :value => @book.id %>
+
+      <div class="form-group">
+        <%= f.label  "Book Name.", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.label @book.book_name, class: "control-label" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label "ISBN No.", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.label @book.isbn,  class: "form-control "   %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "Student Email", class: "col-md-4 control-label" %>
+      <div class="col-md-4 control-label">
+        <%= f.select :email, options_for_select(User.all.map{|u| [u.email, u.email]}), {},  {class: " selectpicker", data: {"live-search": true}} %>
+      </div>  
+      </div> 
+      <div class="form-group ">
+        <%= f.label :return_date, "Return Date", class: "col-md-4 control-label" %>
+      <div class="col-md-4 ">
+        <%= f.date_field :return_date, as: :date, value: f.object.try(:strftime,"%m/%d/%Y") %>
+      </div>  
+      </div> 
+      <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+          <%= button_tag(type: "submit", id: "btn-signup", class: "btn btn-primary ") do %>
+          Submit Book 
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+  <% else %>
+  <h2>Login to submit</h2>
+  <%= render 'login'%>
+ <% end %>    
+
+
+
+

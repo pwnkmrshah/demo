@@ -1,0 +1,31 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "bootstrap": "file:bootstrap",
+    "bootstrap-select": "file:bootstrap-select",
+    "bootstrap-table": "^1.15.4",
+    "datatables.net": "^1.10.20",
+    "datatables.net-dt": "^1.10.20",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0",
+    "select2": "^4.0.11",
+    "selectpage": "^2.19.0",
+    "vanilla-select": "^1.0.13"
+  },
+  "devDependencies": {
+    "install-peers": "^1.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

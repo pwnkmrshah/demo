@@ -1,0 +1,14 @@
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+
+
+<h3>To issue and submit books from available books click below<br></h3>
+<h4><%= link_to "Manages Books", manage_book_path(@issue_book) %> </h4> <h3>To add
+new books click below<br></h3> <h4><%= link_to "Add new", '/books/new'%> </h4>
+<% else %>
+
+<h2>To login click here<br></h2>
+<h3><%= link_to "Login", '/sessions/new'%> </h3>
+
+<% end %>
+<p id=”notice”><%= notice %></p>
