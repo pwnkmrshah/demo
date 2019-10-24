@@ -4,8 +4,9 @@ class BooksController < ApplicationController
 		@book = Book.new
 	end
   
-  def book_list
+  def book_details
     @book =Book.all
+    @issue_book = IssueBook.all
   end
 
   def create
@@ -14,7 +15,7 @@ class BooksController < ApplicationController
   @book.status = "available"
     if @book.save
       flash[:notice] = "#{@book.book_name} saved"
-      redirect_to book_list_path(@book)
+      redirect_to book_details_path(@book)
     else
       render 'new'
     end

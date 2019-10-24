@@ -25,12 +25,12 @@
         <th>Author</th>
         <th>ISBN</th>
         <th>Price</th>
-        <th>Action</th>
+        <!-- <th>Action</th> -->
         <th>Status</th>
       </tr>
       </thead>
       <tbody>
-      <%  for book in @book.order('id asc') do %>
+      <%  for book  in @book.order('id asc') do %>
       <tr>
         <td> <%= book.id%> </td> 
         <td> <%= book.book_name %> </td> 
@@ -38,17 +38,17 @@
         <td> <%= book.author %> </td>
         <td> <%= book.isbn %> </td>
         <td> <%= book.price %> </td>
-        <td>
-        <%if book.available? %>  
+        <!-- <td>
+        <%#if @issue_book.issued %>  
         <div class="px-2">
-          <%= link_to "Issue", issue_form_path(id: book.id), class: "btn btn-primary "%> 
+          <%#= link_to "Issue", issue_form_path(id: book.id), class: "btn btn-primary "%> 
         </div >
-        <%else%>
+        <%#else%>
         <div class="px-2">
-          <%= link_to "Submit", submit_issued_book_path(id: book.id), class: "btn btn-info "%> 
+          <%#= link_to "Submit", submit_issued_book_path(id: book.id), class: "btn btn-info "%> 
         </div>
-        <%end%>
-        </td>
+        <%#end%>
+        </td> -->
         <td> <%= book.status %></td>>
       </tr>
       <%end%>

@@ -8,6 +8,13 @@ class User < ApplicationRecord
                      :confirmation => true
   validates :phone, :presence => true,
   				    numericality: { only_integer: true, message: "not a number" }
-  
+
+
+  before_save :set_admin
+
+  private
+  def set_admin
+    self.admin = User.count == 0
+  end
 
 end

@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
 protect_from_forgery with: :exception
 helper_method :current_user
 
+
+def require_admin
+  if !current_user.admin?
+     redirect_to root_path
+  end
+end
+
+
 def current_user
   if session[:user_id]
     @current_user ||= User.find(session[:user_id])
@@ -9,7 +17,5 @@ def current_user
     @current_user = nil
   end
 end
-
-
 
 end

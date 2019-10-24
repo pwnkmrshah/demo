@@ -2,14 +2,15 @@
 
 Rails.application.routes.draw do
 
-  root 'books#book_list'
-
+  # root 'books#book_details'
+  root 'home#index'
   resources :book, :users
 
   get '/sessions/sessions/new' => 'sessions#new'
   get 'users/sessions/new' => 'sessions#new'
   get '/books/users/new' => 'sessions#new'
   get '/books/home/index' => 'home#index'
+  get  '/sessions/home/index' => 'home#index'
 
   get 'signup', to: 'users#new', as: 'signup' 
   get 'login', to: 'sessions#new', as: 'login'
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   get '/books/books/submit' => 'books#submit'
   post 'books/submit'
 
-  get 'books/book_list' => 'books#book_list', as: 'book_list'
+  get 'books/book_details' => 'books#book_details', as: 'book_details'
 
   get 'issue_form' => 'issue_books#new', as: 'issue_form'
   

@@ -6,7 +6,6 @@ class IssueBooksController < ApplicationController
   end   
 
   def issue
-    byebug
     @issue_book = IssueBook.new
     @issue_book = IssueBook.new(issue_book_params)
     @issue_book.issue_date = DateTime.current.strftime("%d-%m-%Y")
@@ -47,6 +46,10 @@ class IssueBooksController < ApplicationController
     end
   end    
 
+  def re_issue
+    @issue_book =IssueBook.new
+    @issue_book =IssueBook.all
+  end
   private
 
   def issue_book_params
