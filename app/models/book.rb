@@ -9,4 +9,6 @@ class Book < ApplicationRecord
 	validates_uniqueness_of :isbn
 	validates :price, :presence => true, numericality: { only_integer: true, message: "Integer only" }
 
+  mount_uploader :image, ImageUploader
+
 end

@@ -9,6 +9,7 @@ end
 
 gem 'validates_timeliness', '~> 5.0.0.alpha3'
 
+gem 'carrierwave' 
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 # gem 'bootstrap-sass', ~>'3.3.6'

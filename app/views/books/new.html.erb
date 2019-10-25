@@ -33,6 +33,10 @@
     <%= form.label :price %><br/>
     <%= form.text_field :price  %>
   </p>
+  <p>
+    <%= form.label :image %><br/>
+    <%= form.file_field :image  %>
+  </p>
  
   <%= form.submit 'Add Book', class: 'button btn btn-primary' %> <br><br>
 <% end %>

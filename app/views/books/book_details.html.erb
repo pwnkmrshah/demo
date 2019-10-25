@@ -1,6 +1,5 @@
  
 <% if current_user && current_user.admin? %>
-<%byebug%>
 <div class="form-group pull-right">
     <input type="text" class="search form-control" placeholder="What you looking for?">
 </div>
@@ -27,6 +26,7 @@
         <th>Author</th>
         <th>ISBN</th>
         <th>Price</th>
+        <th>Image</th>>
         <th>Action</th>
         <th>Status</th>
       </tr>
@@ -40,6 +40,8 @@
         <td> <%= book.author %> </td>
         <td> <%= book.isbn %> </td>
         <td> <%= book.price %> </td>
+        <!-- <td> <%#=  image_tag(@book.image_url.to_s) %> </td> -->
+        <td> <%= image_tag book.image_url.to_s %> </td> 
         <td>
         <%if @issue_book.issued %>  
         <div class="px-2">
