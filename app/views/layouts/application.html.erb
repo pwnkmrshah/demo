@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,7 +26,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
   </head>
+
+
   <%= render '/layouts/header' %>
   <h4 style="color: blue;">
     <p class="notice"> 
@@ -39,7 +43,10 @@
   </h4> 
   <div class="container">
     <body>
+      <div class="myClass">
       <%= yield %>
+  
+      </div>
     </body>
   </div>
 </html>

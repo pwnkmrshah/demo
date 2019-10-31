@@ -1,0 +1,65 @@
+<div class="form-group pull-right">
+  <input type="text" class="search form-control" placeholder="What you looking for?">
+</div>
+  <div class="container">
+      <div class="table-title">
+          <div class="row">
+            <div class="col-sm-8"><h2>Book <b>Details</b></h2></div>
+            <div class="col-sm-4 ">
+              <a href="books/new">
+                <button type="button" class="btn btn-info add-new">
+                  <i class="fa fa-plus"></i> Add New
+                </button>
+              </a>
+            </div>
+          </div>
+      </div>
+      <table class="table table-bordered table-hover results" id="del"> 
+      <thead >
+      <tr>
+        <th>#</th>
+        <th >Book Name</th>
+        <th>Category</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Price</th>
+        <!-- <th>Action</th>
+        <th>Status</th> -->
+        <th>View</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td> <%= book.id%> </td> 
+        <td> <%= book.book_name %> </td> 
+        <td> <%= book.category %> </td>
+        <td> <%= book.author %> </td>
+        <td> <%= book.isbn %> </td>
+        <td> <%= book.price %> </td>
+        <td>
+        <!-- <%#if @issue_book.issued %>  
+        <div class="px-2">
+          <%#= link_to "Issue", issue_form_path(id: book.id), class: "btn btn-primary "%> 
+        </div >
+       
+        <%#else%>
+        <div class="px-2">
+          <%#= link_to "Submit", submit_issued_book_path(id: book.id), class: "btn btn-info "%> 
+        </div>
+        <%#end%>
+        </td>
+        <td> 
+          <%#= book.status %>
+        </td>
+        <td>  -->
+          <div class="px-2">
+            <%= link_to "Show", book_path(book), class: "btn btn-info "%> 
+          </div>
+        </td>
+      </tr>
+      <%end%>
+    </tbody>
+    </table>
+  </div>
+</div>

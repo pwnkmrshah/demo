@@ -31,7 +31,7 @@ class IssueBooksController < ApplicationController
   end
 
   def submit
-    byebug
+    # byebug
     @issue_book = IssueBook.new
     @issue_book = IssueBook.new(submit_book_params)
     @issue_book.issue_date = DateTime.current

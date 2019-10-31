@@ -1,4 +1,4 @@
- <% if current_user.present? %>
+ <% if current_user && current_user.admin? %>
   <div id="signupbox" style="margin-top:50px" class="mainbox col-md-5 col-md-offset-4 col-sm-7 col-sm-offset-3">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -37,11 +37,18 @@
     <% end %>
     </div>
   </div>
+  <% elsif current_user %>
+  <blockquote>
+    You are not authorize to issue books.
+    <P>
+       <%= link_to 'Back', books_path, :class => "btn btn-primary", :style => "color: #ffffff"%>
+    </P>
+  </blockquote>
 
   <% else %>
   <h2>Login to issue</h2>
-  <%= render 'login'%>
- <% end %>    
+    <%= render 'login'%>
+  <% end %>    
 
 
 

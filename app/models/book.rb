@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-	has_one :issue_book
+	has_one :issue_book, dependent: :destroy
 	enum status: [:issued, :available]
 
 	validates :book_name, :presence => true
@@ -9,6 +9,8 @@ class Book < ApplicationRecord
 	validates_uniqueness_of :isbn
 	validates :price, :presence => true, numericality: { only_integer: true, message: "Integer only" }
 
-  mount_uploader :image, ImageUploader
+  	mount_uploader :image, ImageUploader
+
+
 
 end

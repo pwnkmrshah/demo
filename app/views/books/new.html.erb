@@ -1,4 +1,4 @@
- <% if current_user.present? %>
+ <% if current_user && current_user.admin?  %>
 <h1>Add Books here ..</h1>
 
 <%= form_for @book, :url => {:action => "create"} do |form| %>
@@ -40,7 +40,14 @@
  
   <%= form.submit 'Add Book', class: 'button btn btn-primary' %> <br><br>
 <% end %>
-<% else %>
+<% elsif current_user %>
+<blockquote>
+  You are not authorize to add books.
+<P>
+   <%= link_to 'Back', books_path, :class => "btn btn-primary", :style => "color: #ffffff"%>
+</P>
+</blockquote>
+<%else%>
   <h2>Login to Add books</h2>
   <%= render 'login'%>
  <% end %>    

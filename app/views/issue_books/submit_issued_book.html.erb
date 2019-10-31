@@ -26,7 +26,7 @@
         <div class="form-group">
           <%= f.label :email, "User Email", class: "col-md-4 control-label" %>
           <div class="col-md-4 control-label">
-            <%= f.select :email, options_for_select(User.all.map{|u| [u.email, u.email]}), {},{class: " selectpicker", data: {"live-search": true}} %>
+            <%= f.select :email, options_for_select(User.all.map{|u| [u.email, u.email]}),{} ,{class: " selectpicker", data: {"live-search": true}} %>
             <%#= f.select :email, options_for_select(User.all.map{|u| [u.email, u.email]}), {},{data: {"live-search": true}} %>
           </div>  
 

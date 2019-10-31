@@ -1,42 +1,52 @@
 class BooksController < ApplicationController
 
-	def new
+	def index
+    @books = Book.all.order('id asc')
+  end
+
+  def new
 		@book = Book.new
 	end
   
-  def book_details
-    @book =Book.all
-    @issue_book = IssueBook.all
-  end
-
   def create
-  @book = Book.new(book_params)
-  @book.status = "available"
+    @book = Book.new(book_params)
+    @book.status = "available"
     if @book.save
       flash[:notice] = "#{@book.book_name} saved"
-      redirect_to book_details_path(@book)
+      redirect_to books_path(@book)
     else
       render 'new'
     end
   end
 
   def show
-    @book = Book.find_by(id: params["id"])
-  end
-
-  def update
-    byebug
+    @issue_books = IssueBook.all
     @book = Book.find_by(id: params["id"])
   end
 
   def edit
-    byebug
-     @book = Book.find_by(params[:id])
-    # @book = Book.update(book_params)
+    @book = Book.find_by(id: params["id"])
+  end
+
+  def update
+    @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to book_details_path
+      redirect_to books_path
     else
       render "edit"
+    end
+  end
+
+  def destroy
+    byebug
+    @book = Book.find(params[:id])
+    respond_to do |format|
+      if @book.present?
+        @book.destroy
+        format.html { redirect_to books_path, notice: 'Book was successfully destroyed.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 

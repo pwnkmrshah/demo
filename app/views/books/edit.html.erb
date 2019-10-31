@@ -1,0 +1,51 @@
+<% if current_user && current_user.admin?  %>
+  <h1>Editing Book</h1>
+
+  <%= form_for @book, :url => {:controller => :books, :action => "update"} do |form| %>
+    <% if @book.errors.any? %>  
+      <div style="color: red;">  
+        <ul>  
+          <% for message in @book.errors.full_messages %>  
+            <li><%=  message %></li>  
+          <% end %>  
+        </ul>  
+      </div>  
+      <% end %>
+      <p>
+        <%= form.label :book_name %><br/>
+        <%= form.text_field :book_name %>
+      </p>
+      <p>
+        <%= form.label :category %><br/>
+        <%= form.text_field :category %>
+      </p>
+      <p>
+        <%= form.label :author %><br/>
+        <%= form.text_field :author %>
+      </p>
+      <p>
+        <%= form.label :isbn %><br/>
+        <%= form.text_field :isbn %>
+      </p>
+      <p>
+        <%= form.label :price %><br/>
+        <%= form.text_field :price  %>
+      </p>
+      <p>
+        <%= form.label :image %><br/>
+        <%= form.file_field :image  %>
+      </p>
+      <%= form.submit 'Update Book', class: 'button btn btn-primary' %> <br><br>
+  <% end %>
+  <%= link_to 'Back', books_path, :class => "btn btn-primary", :style => "color: #ffffff" %>
+  <% elsif current_user %>
+    <blockquote>
+      You are not authorize to update books.
+      <P>
+        <%= link_to 'Back', books_path, :class => "btn btn-primary", :style => "color: #ffffff"%>
+      </P>
+    </blockquote>
+  <% else %>
+    <h2>Login to Edit</h2>
+      <%= render 'login'%>
+  <% end %>    

@@ -1,7 +1,6 @@
 <%= form_tag @book,  :class => "container container-fliud" do %>
 <div class="container">
   <div class="container-fliud">
-  <!-- <div class="wrapper row"> -->
     <div class="preview col-md-6">
       <div class="preview-pic tab-content">
         <div class="tab-pane active" id="pic-1">
@@ -10,8 +9,6 @@
       </div>
     </div>
     <div class="details form-group">
-      <!-- <h3 class="product-title">men's shoes fashion</h3> -->
-      <!-- <h1 class="product-title"> <%= @book.book_name %></h1> -->
       <h1> <%= label_tag @book.book_name , nil%> </h1>
     </div>
     <p class="product-description">
@@ -24,9 +21,11 @@
       <h4><%= "Currently this book is #{@book.status}"%></h4>
     </p>
     <div class="px-2">
-      <h5>To update this book details click below</h5>
-        <%#= link_to "Update", update_book_path(id: @book.id ), class: "btn btn-primary "%> 
-        <%= link_to "Update", update_book_path(id: @book.id), class: "btn btn-primary "%> 
+        <%= link_to "Edit", edit_book_path(@book), class: "btn btn-primary "%> 
+    </div >
+    <div class="px-2">
+        <%= link_to 'Delete', @book, method: :delete , class: "btn btn-danger ",data: {confirm: 'Are you sure?'}%>
+    </div> 
     </div >
   </div>
   <%end%>

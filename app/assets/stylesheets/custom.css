@@ -1,5 +1,15 @@
-
+.myClass {
+   background: image-url('myPicture.png');
+}
 /***********************************/
+.index {
+    margin-top: -50px;
+    margin-left: 25%;
+    margin-right: 25%;
+    color: blue;
+    font-family: comic sans ms;
+    background-color: yellow;
+}
 
 /*css for spacing between issue and submit button*/
 .px-2 {
