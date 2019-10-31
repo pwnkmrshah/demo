@@ -23,7 +23,16 @@ Rails.application.routes.draw do
   get '/home/index', to:'home#index', as: 'home' 
 
   get 'books/new'
+
+  get 'books/update' => 'books#update', as: 'update_book'
+
+  # patch '/book.:id/' => 'books#edit' 
+   patch 'update' => 'books#edit'
+
+  # post 'books/update' => 'books#update'
+  
   get '/books/books/new' => 'books#new'
+
   post 'books/create'
 
   get 'books/submit'
@@ -42,8 +51,9 @@ Rails.application.routes.draw do
 
   post '/issue_books/issue' => 'issue_books#issue', as: 'issue_book'
 
-
   post '/issue_books/submit' => 'issue_books#submit', as: 'submit_book'
+
+  get '/books/show' => 'books#show', as: 'show'
 
 end
 

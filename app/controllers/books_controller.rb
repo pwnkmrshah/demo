@@ -10,7 +10,6 @@ class BooksController < ApplicationController
   end
 
   def create
-  byebug
   @book = Book.new(book_params)
   @book.status = "available"
     if @book.save
@@ -21,8 +20,29 @@ class BooksController < ApplicationController
     end
   end
 
+  def show
+    @book = Book.find_by(id: params["id"])
+  end
+
+  def update
+    byebug
+    @book = Book.find_by(id: params["id"])
+  end
+
+  def edit
+    byebug
+     @book = Book.find_by(params[:id])
+    # @book = Book.update(book_params)
+    if @book.update(book_params)
+      redirect_to book_details_path
+    else
+      render "edit"
+    end
+  end
+
   private
   def book_params
     params.require(:book).permit(:book_name, :category, :author, :isbn, :price, :status, :image)
   end
+
 end
