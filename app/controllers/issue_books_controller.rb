@@ -5,8 +5,7 @@ class IssueBooksController < ApplicationController
     @book = Book.find_by_id(params["id"])
   end   
 
-  def issue
-    @issue_book = IssueBook.new
+  def issue_book
     @issue_book = IssueBook.new(issue_book_params)
     @issue_book.issue_date = DateTime.current.strftime("%d-%m-%Y")
     @issue_book.submission_date = 30.days.from_now
@@ -14,7 +13,6 @@ class IssueBooksController < ApplicationController
     if @issue_book.save
       flash[:notice] = " #{@issue_book.book_id} issued to #{@issue_book.email} "
       redirect_to manage_book_path
-
     else
       flash[:alert] = "Not issued"
       redirect_to root_path
@@ -30,9 +28,7 @@ class IssueBooksController < ApplicationController
     @book = Book.find_by(id: params["id"])
   end
 
-  def submit
-    # byebug
-    @issue_book = IssueBook.new
+  def submit_book
     @issue_book = IssueBook.new(submit_book_params)
     @issue_book.issue_date = DateTime.current
     @issue_book.submission_date = 30.days.from_now
@@ -46,10 +42,6 @@ class IssueBooksController < ApplicationController
     end
   end    
 
-  def re_issue
-    @issue_book =IssueBook.new
-    @issue_book =IssueBook.all
-  end
   private
 
   def issue_book_params

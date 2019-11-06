@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
 
   def new
-  # byebug
     @user = User.new
-	end
+  end
 
   def index
     @user = User.all
@@ -25,12 +24,9 @@ class UsersController < ApplicationController
     @user = User.all
   end
 
-  def destroy
-    User.find(params[:id]).delete
-  end
-
   private 
   def user_params
-  	params.require(:user).permit(:name, :email, :phone, :password)
+    params.require(:user).permit(:name, :email, :phone, :password)
   end
+
 end

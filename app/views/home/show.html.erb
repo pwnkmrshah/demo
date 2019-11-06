@@ -1,0 +1,32 @@
+<div class="form-group pull-right">
+  <input type="text" class="search form-control" placeholder="What you looking for?">
+</div>
+  <div class="container">
+      <div class="table-title wrapper">
+      </div>
+      <table class="table table-bordered table-hover results" id="del"> 
+      <thead >
+      <tr>
+        <th>#</th>
+        <th >Book Name</th>
+        <th>Category</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Price</th>
+      </tr>
+      </thead>
+      <% @books.each do |book|  %>
+      <tbody>
+      <tr>
+        <td> <%= book.id%> </td> 
+        <td> <%= book.book_name %> </td> 
+        <td> <%= book.category %> </td>
+        <td> <%= book.author %> </td>
+        <td> <%= book.isbn %> </td>
+        <td> <%= book.price %> </td>
+      </tr>
+    </tbody>
+    <%end%>
+    </table>
+  </div>
+</div>

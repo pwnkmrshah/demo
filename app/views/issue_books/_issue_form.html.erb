@@ -6,7 +6,7 @@
       </div>
     </div>  
     <div class="panel-body" >
-      <%= form_for @issue_book, :url => {:action => "issue"}, :html => {:id => "signupform", :class => "form-horizontal"} do |f|%>
+      <%= form_for @issue_book, :url => {:action => "issue_book"}, :html => {:id => "signupform", :class => "form-horizontal"} do |f|%>
 
         <div class="form-group">
           <%= f.label :email, "User Email", class: "col-md-4 control-label" %>

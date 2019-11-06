@@ -1,5 +1,6 @@
 
 <% if current_user && current_user.admin? %>
+
   Logged in as <%= current_user.name %>.
 
   <h3>Issue and Submit books from Here<br></h3>
@@ -8,22 +9,21 @@
   <h4><%= link_to "Add new", '/books/new', class: 'button btn btn-success'%> </h4>
   <h3>View available books from Here<br></h3> 
   <h4><%= link_to "View Books", books_path(@book), class: 'button btn btn-primary'%> </h4>
-
-<% elsif current_user %>
+  <% elsif current_user  %>
   Logged in as <%= current_user.name %>.
 
   <h3>View Issued and Submitted books from Here<br></h3>
   <h4><%= link_to "Manages Books", manage_book_path(@issue_book), class: 'button btn btn-info' %> </h4> 
 
   <h3>View available books from Here<br></h3> 
-  <h4><%= link_to "View Books", books_path(@book), class: 'button btn btn-primary'%> </h4>
+  <h4><%= link_to "View Books", show_path(@book), class: 'button btn btn-primary'%> </h4>
 <%else%>
 <div class="index"> 
   <h2 >Welcome to Online Library Management<br></h2>
 </div>
    <h3>View available books from Here<br></h3> 
     <h4>
-      <%= link_to "View Books", books_path(@book), class: 'button btn btn-primary' %> 
+      <%= link_to "View Books", show_path(@book), class: 'button btn btn-primary' %> 
     </h4>
 
 <% end %>

@@ -7,7 +7,7 @@
       </div>
     </div>  
     <div class="panel-body" >
-      <%= form_for @issue_book, :url => {:action => "submit"}, :html => {:id => "signupform", :class    => "form-horizontal"} do |f|%>
+      <%= form_for @issue_book, :url => {:action => "submit_book"}, :html => {:id => "signupform", :class    => "form-horizontal"} do |f|%>
 
         <%= f.hidden_field :book_id, :value => @book.id %>
         <div class="form-group">
@@ -26,7 +26,6 @@
           <%= f.label :email, "User Email", class: "col-md-4 control-label" %>
           <div class="col-md-4 control-label">
             <%= f.select :email, options_for_select(User.all.map{|u| [u.email, u.email]}), {},{class: " selectpicker", data: {"live-search": true}} %>
-            <%#= f.select :email, options_for_select(User.all.map{|u| [u.email, u.email]}), {},{data: {"live-search": true}} %>
           </div>  
 
         </div> 

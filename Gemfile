@@ -12,6 +12,7 @@ gem 'validates_timeliness', '~> 5.0.0.alpha3'
 gem 'carrierwave' 
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+
 # gem 'bootstrap-sass', ~>'3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
@@ -38,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

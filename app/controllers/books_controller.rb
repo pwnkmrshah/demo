@@ -40,15 +40,12 @@ class BooksController < ApplicationController
   def destroy
     byebug
     @book = Book.find(params[:id])
-    respond_to do |format|
-      if @book.present?
-        @book.destroy
-        format.html { redirect_to books_path, notice: 'Book was successfully destroyed.' }
-      else
-        format.html { render :new }
-      end
+    if @book.destroy
+       redirect_to books_path, notice: 'Book was successfully destroyed.' 
+     else
+      render "index"
+     end
     end
-  end
 
   private
   def book_params

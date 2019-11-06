@@ -8,7 +8,7 @@
       </div>
     </div>  
     <div class="panel-body" >
-      <%= form_for @issue_book, :url => {:action => "submit"}, :html => {:id => "signupform", :class    => "form-horizontal"} do |f|%>
+      <%= form_for @issue_book, :url => {:action => "submit_book"}, :html => {:id => "signupform", :class    => "form-horizontal"} do |f|%>
 
         <%= f.hidden_field :book_id, :value => @book.id %>
         <div class="form-group">

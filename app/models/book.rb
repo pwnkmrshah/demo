@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-	has_one :issue_book, dependent: :destroy
+
 	enum status: [:issued, :available]
 
 	validates :book_name, :presence => true
@@ -11,6 +11,6 @@ class Book < ApplicationRecord
 
   	mount_uploader :image, ImageUploader
 
-
+  	
 
 end

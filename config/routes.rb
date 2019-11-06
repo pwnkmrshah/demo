@@ -1,42 +1,26 @@
-
-
 Rails.application.routes.draw do
-
-  # root 'books#book_details'
   root 'home#index'
-  get '/home/index', to:'home#index', as: 'home' 
-
-  resources :books, :users
-
-  get '/sessions/sessions/new' => 'sessions#new'
-  get 'users/sessions/new' => 'sessions#new'
-  get '/books/users/new' => 'sessions#new'
-  get '/books/home/index' => 'home#index'
-  get  '/sessions/home/index' => 'home#index'
-  get '/books/books/home/index' => 'home#index'
-
+  
+  resources :books
+  
+  resources :users, only: [:new, :index, :create, :show]
+  
+  resources :home, only: [:index, :show]
+  
+  get '/show' => 'home#show', as: 'show' 
+  
+  resources :sessions, only: [:new, :create]
+  
   get 'signup', to: 'users#new', as: 'signup' 
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
-  # delete '/books', to: 'books#destroy'
-  # delete '/books/:id', to: 'books#destroy'
-  delete '/books/:id' => 'books#destroy'
-  resources :sessions, only: [:new, :create]
-  get '/sessions' => 'sessions#new'
-
-  get 'issue_form' => 'issue_books#new', as: 'issue_form'
   
+  get 'issue_form' => 'issue_books#new', as: 'issue_form'
   get 'submit_issued_book' => 'issue_books#submit_issued_book', as: 'submit_issued_book'
-
   post '/issue_books/submit_issued_book' => 'issue_books#submit_issued_book'
-
   get 'manage_book' => 'issue_books#manage_book', as: 'manage_book'
-
-  post '/issue_books/issue' => 'issue_books#issue', as: 'issue_book'
-
-  post '/issue_books/submit' => 'issue_books#submit', as: 'submit_book'
-
-  get '/books/show' => 'books#show', as: 'show'
-
+  post '/issue_books/issue' => 'issue_books#issue_book', as: 'issue_book'
+  post '/issue_books/submit' => 'issue_books#submit_book', as: 'submit_book'
+  
 end
 

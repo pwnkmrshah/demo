@@ -1,15 +1,9 @@
 <nav class="navbar navbar-inverse">
-  <!-- <nav  class="navbar navbar-light" style="background-color: #e3f2fd;"> -->
-<!-- navbar navbar-dark bg-dark -->
-
-
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="home/index">Online Library Management System</a>
+      <%= link_to "Online Library Management System", root_path, class: "navbar-brand"  %>
     </div>
     <ul class="nav navbar-nav">
-      <!-- <li class="active"><a href="#">Home</a></li> -->
-      
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if current_user.present? %>
@@ -18,14 +12,12 @@
         </li>
       <% else %>
         <li>
-          <a href="users/new"><span class="glyphicon glyphicon-user"></span> User Sign Up</a>
+          <%= link_to "SignUp", signup_path, class: "glyphicon glyphicon-user"%>
         </li>
         <li>
-          <a href="sessions/new"><span class="glyphicon glyphicon-log-in"></span> User Login</a>
+          <%= link_to "Login", login_path, class: "glyphicon glyphicon-log-in"%>
         </li>
       <% end %>
-
-      <!-- <li><a href="admin/login"><span class="glyphicon glyphicon-log-in"></span> Admin Login</a></li> -->
     </ul>
   </div>
 </nav>

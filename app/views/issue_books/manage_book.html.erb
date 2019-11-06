@@ -23,7 +23,7 @@
     </tr>
     </thead>
     <tbody>
-    <% for issue_book in @issue_book do %>
+    <% @issue_book.each do |issue_book|  %>
     <tr>
       <td> <%= issue_book.book_id%> </td> 
       <td> <%= issue_book.email%> </td> 
@@ -64,7 +64,6 @@
       <th>Issued on</th>
       <th>Submission Date</th>
       <th>Return Date</th>
-      <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -75,17 +74,6 @@
       <td> <%= issue_book.issue_date %> </td> 
       <td> <%= issue_book.submission_date %> </td>
       <td> <%= issue_book.return_date %> </td>
-      <td>
-        <% if issue_book.issued? %>
-        <div class="px-2">
-          <%= link_to "Submit", submit_issued_book_path(id: issue_book.book_id), class: "btn btn-danger "%> 
-        </div>
-        <%else%>
-        <div class="px-2">
-          <%= link_to "Issue", issue_form_path(id: issue_book.book_id), class: "btn btn-info "%> 
-        </div>
-        <%end%>
-      </td>
     </tr>
       <%end%>
   </tbody>
